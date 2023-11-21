@@ -1,0 +1,19 @@
+{
+  "name": "rectangle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate": "node data/factory/generateSamples.js",
+    "nist": "node tests/nist/index.js",
+    "tests": "node tests/non-robust/bit-difference.js && node tests/non-robust/bit-independence.js && node tests/non-robust/hamming-weight.js && node tests/confusion/correlation.js  && node tests/diffusion/avalanche.js && node tests/performance/performance.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^22.1.0",
+    "random": "^4.1.0",
+    "seedrandom": "^3.0.5"
+  }
+}

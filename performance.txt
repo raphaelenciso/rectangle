@@ -1,0 +1,17 @@
+hp orig
+.68
+
+pc modified
+.94
+
+hp modified (no bbs)
+.72
+
+pc orig
+.21
+
+pc modified
+.34
+
+pc modified (no bbs)
+.21

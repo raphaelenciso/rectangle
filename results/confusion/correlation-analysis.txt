@@ -1,0 +1,108 @@
+========================================
+RECTANGLE  
+========================================
+HDK
+------------------------
+Non-linear relationship: 16
+Weak positive: 966
+Moderate positive: 18
+Strong positive: 0
+Perfect positive: 0
+
+LDK
+------------------------
+Non-linear relationship: 20
+Weak positive: 961
+Moderate positive: 19
+Strong positive: 0
+Perfect positive: 0
+
+RK
+------------------------
+Non-linear relationship: 18
+Weak positive: 966
+Moderate positive: 16
+Strong positive: 0
+Perfect positive: 0
+
+========================================
+3D EXTENDED RECTANGLE
+========================================
+HDK
+------------------------
+Non-linear relationship: 18
+Weak positive: 968
+Moderate positive: 14
+Strong positive: 0
+Perfect positive: 0
+
+LDK
+------------------------
+Non-linear relationship: 14
+Weak positive: 969
+Moderate positive: 17
+Strong positive: 0
+Perfect positive: 0
+
+RK
+------------------------
+Non-linear relationship: 13
+Weak positive: 972
+Moderate positive: 15
+Strong positive: 0
+Perfect positive: 0
+
+========================================
+MODIFIED KSA RECTANGLE
+========================================
+HDK
+------------------------
+Non-linear relationship: 21
+Weak positive: 959
+Moderate positive: 20
+Strong positive: 0
+Perfect positive: 0
+
+LDK
+------------------------
+Non-linear relationship: 19
+Weak positive: 963
+Moderate positive: 18
+Strong positive: 0
+Perfect positive: 0
+
+RK
+------------------------
+Non-linear relationship: 17
+Weak positive: 968
+Moderate positive: 15
+Strong positive: 0
+Perfect positive: 0
+
+========================================
+MODIFIED RECTANGLE
+========================================
+HDK
+------------------------
+Non-linear relationship: 21
+Weak positive: 961
+Moderate positive: 18
+Strong positive: 0
+Perfect positive: 0
+
+LDK
+------------------------
+Non-linear relationship: 24
+Weak positive: 962
+Moderate positive: 14
+Strong positive: 0
+Perfect positive: 0
+
+RK
+------------------------
+Non-linear relationship: 22
+Weak positive: 963
+Moderate positive: 15
+Strong positive: 0
+Perfect positive: 0
+
