@@ -18,9 +18,13 @@ const correlationTemplate = require("../../modules/correlation-template.js");
 // 0xc6b8cf09
 
 const keys = [
-  [0xffffffff, 0xfeffffff, 0xffffffff, 0xffffffff],
-  [0x00000000, 0x00000000, 0x00000000, 0x01000000],
+  // [0xffffffff, 0xffffffff, 0xffffffff, 0xfffffffe],
+  // [0x00000000, 0x00000000, 0x00000000, 0x00000001],
+  //1 ,3
+  [2862574150, 3334000393, 2597855726, 2043861579],
+  [2597855726, 3334000393, 2862574150, 2043861579],
   [0xc6b8cf09, 0xaa9f6a42, 0x9ad821ee, 0xb992da4a],
+  // 3936299590
 ];
 
 //index 0 = hdk, 1 = ldk, 2 = rk
@@ -171,6 +175,7 @@ function calculateCorrelationCoefficient(key) {
 
     if (correlationCoefficient === 0) {
       nlr++;
+      // wp++;
     } else if (
       Math.abs(correlationCoefficient) > 0 &&
       Math.abs(correlationCoefficient) <= 0.3

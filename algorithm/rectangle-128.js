@@ -112,7 +112,6 @@ class Rectangle {
     const numberOfRuns = 1;
     let totalTime = 0;
     let roundkeys = [];
-    let subkeys = [];
     let ciphertexts = [];
 
     for (let i = 0; i < numberOfRuns; i++) {
@@ -131,6 +130,10 @@ class Rectangle {
         this.addRoundKey(roundKey);
         this.subColumn(this.cipherText);
         this.shiftRow();
+        //extended function for correlation
+        if (keys === 2.1) {
+          ciphertexts.push(this.transformToBin(this.cipherText));
+        }
       }
       const roundKey = this.generateRoundKey(true);
 
@@ -142,6 +145,11 @@ class Rectangle {
 
       this.addRoundKey(roundKey);
 
+      //extended function for correlation
+      if (keys === 2.1) {
+        ciphertexts.push(this.transformToBin(this.cipherText));
+      }
+
       let end = window.performance.now();
       let time = end - start;
       totalTime += time;
@@ -151,6 +159,10 @@ class Rectangle {
 
     // console.log(`Average Execution time: ${totalTime / numberOfRuns} ms`);
 
+    //extended function for correlation
+    if (keys === 2.1) {
+      return ciphertexts;
+    }
     return roundkeys;
   }
 

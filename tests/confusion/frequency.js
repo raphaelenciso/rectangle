@@ -39,6 +39,11 @@ function runTestCase(testCases, algorithm = "rectangle") {
 
     if (algorithm === "rectangle") {
       newRectangle = new Rectangle(testCase.plaintext, testCase.key);
+    } else if (algorithm === "3d") {
+      newRectangle = new ThreeDimensionalRectangle(
+        testCase.plaintext,
+        testCase.key
+      );
     } else if (algorithm === "modifiedKsa") {
       newRectangle = new ModifiedKsaRectangle(testCase.plaintext, testCase.key);
     } else if (algorithm === "modified") {
@@ -57,5 +62,6 @@ function runTestCase(testCases, algorithm = "rectangle") {
 }
 
 runTestCase(testCases, "rectangle");
+runTestCase(testCases, "3d");
 runTestCase(testCases, "modifiedKsa");
 runTestCase(testCases, "modified");
