@@ -12,15 +12,11 @@ const ThreeDimensionalRectangle = require("../../algorithm/3d-rectangle-128-reva
 const ModifiedKsaRectangle = require("../../algorithm/modified-ksa-rectangle-128");
 const ModifiedRectangle = require("../../algorithm/modified/bbs-nonce-module-rectangle-revamp");
 
-const hdkTestCases = require("../../data/hdk");
-const ldkTestCases = require("../../data/ldk");
-const rkTestCases = require("../../data/rk");
 const testCases = require("../../data/testCases.json");
 
-// const testCases = [
-//   [0x00000000, 0x00000000, 0x00000000, 0x00000000],
-//   [0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff],
-// ];
+const testCasesPlaintexts = testCases.map((testCase) => testCase.plaintext);
+const plaintexts = require("../../data/plaintexts.json");
+const key = [2597855726, 3334000393, 2862574150, 2043861579];
 
 let ciphertexts = "";
 
@@ -38,16 +34,13 @@ function runTestCase(testCases, algorithm = "rectangle") {
     let newRectangle;
 
     if (algorithm === "rectangle") {
-      newRectangle = new Rectangle(testCase.plaintext, testCase.key);
+      newRectangle = new Rectangle(testCase, key);
     } else if (algorithm === "3d") {
-      newRectangle = new ThreeDimensionalRectangle(
-        testCase.plaintext,
-        testCase.key
-      );
+      newRectangle = new ThreeDimensionalRectangle(testCase, key);
     } else if (algorithm === "modifiedKsa") {
-      newRectangle = new ModifiedKsaRectangle(testCase.plaintext, testCase.key);
+      newRectangle = new ModifiedKsaRectangle(testCase, key);
     } else if (algorithm === "modified") {
-      newRectangle = new ModifiedRectangle(testCase.plaintext, testCase.key);
+      newRectangle = new ModifiedRectangle(testCase, key);
     }
 
     newRectangle.encrypt();
@@ -61,7 +54,12 @@ function runTestCase(testCases, algorithm = "rectangle") {
   writeFiles(algorithm);
 }
 
-runTestCase(testCases, "rectangle");
-runTestCase(testCases, "3d");
-runTestCase(testCases, "modifiedKsa");
-runTestCase(testCases, "modified");
+// runTestCase(plaintexts, "rectangle");
+// runTestCase(plaintexts, "3d");
+// runTestCase(plaintexts, "modifiedKsa");
+// runTestCase(plaintexts, "modified");
+
+runTestCase(testCasesPlaintexts, "rectangle");
+runTestCase(testCasesPlaintexts, "3d");
+runTestCase(testCasesPlaintexts, "modifiedKsa");
+runTestCase(testCasesPlaintexts, "modified");
