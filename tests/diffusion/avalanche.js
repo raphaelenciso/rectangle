@@ -146,7 +146,7 @@ function runAlgorithm(algorithm) {
   dataset = [];
   totalCountbit = 0;
 
-  globalDataset1.forEach((testCase) => {
+  globalDataset2.forEach((testCase) => {
     // const newRectangle = new Rectangle(testCase.plaintext, testCase.key);
     let newRectangle;
 

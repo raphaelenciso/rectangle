@@ -6,7 +6,13 @@
   "scripts": {
     "generate": "node data/factory/generateSamples.js",
     "nist": "node tests/nist/index.js",
-    "tests": "node tests/non-robust/bit-difference.js && node tests/non-robust/bit-independence.js && node tests/non-robust/hamming-weight.js && node tests/confusion/correlation.js  && node tests/diffusion/avalanche.js && node tests/performance/performance.js"
+    "tests": "node tests/non-robust/bit-difference.js && node tests/non-robust/bit-independence.js && node tests/non-robust/hamming-weight.js && node tests/confusion/correlation.js  && node tests/diffusion/avalanche.js && node tests/performance/performance.js",
+    "nonRobustFreq": "node tests/non-robust/frequency.js",
+    "nonRobustBitDiff": "node tests/non-robust/bit-difference.js",
+    "nonRobustBitInd": "node tests/non-robust/bit-independence.js",
+    "confusionFreq": "node tests/confusion/frequency.js",
+    "confusionCor": "node tests/confusion/correlation-revamp.js",
+    "diffusionAv": "node tests/diffusion/avalanche.js"
   },
   "keywords": [],
   "author": "",
