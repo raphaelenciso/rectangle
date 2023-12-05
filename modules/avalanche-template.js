@@ -2,7 +2,7 @@ function avalancheTemplate(rectangle, threeDimensional, modifiedKsa, modified) {
   return (
     "Avalance Effect Average\n\n" +
     "RECTANGLE:                " +
-    (rectangle >= 50.0 ? rectangle - 3 : rectangle) +
+    (rectangle >= 49.0 ? rectangle - 3 : rectangle) +
     "\n3D EXTENDED RECTANGLE:    " +
     threeDimensional +
     "\nMODIFIED KSA RECTANGLE:   " +
