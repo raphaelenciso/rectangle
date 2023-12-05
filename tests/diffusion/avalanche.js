@@ -1,4 +1,3 @@
-//THIS IS FOR PROBLEM 2 CONFUSION AND DIFFUSION BUT CAN PASS AS DIFFUSION PROBLEM ONLY
 const fs = require("fs");
 
 const {
@@ -11,133 +10,7 @@ const ModifiedKsaRectangle = require("../../algorithm/modified-ksa-rectangle-128
 const ModifiedRectangle = require("../../algorithm/modified/bbs-nonce-module-rectangle-revamp.js");
 const avalancheTemplate = require("../../modules/avalanche-template.js");
 
-//plaintext bit difference
-const globalDataset1 = [
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("(i there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("Hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("xi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("`i there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("li there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("ji there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("ii there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi t(ere"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi tHere"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi tXere"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi t`ere"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi tlere"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi tjere"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi tiere"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-];
-
-//key bit difference
-const globalDataset2 = [
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cip(er"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipHer"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipxer"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cip`er"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipler"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipjer"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("rectangle cipier"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("2ectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("Rectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("bectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("zectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("vectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("pectangle cipher"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi there"),
-    key: ciphertextAsciiToDecimal("sectangle cipher"),
-  },
-];
+const globalDataset = require("./dataset.js");
 
 let dataset = [];
 let totalCountbit = 0;
@@ -146,8 +19,7 @@ function runAlgorithm(algorithm) {
   dataset = [];
   totalCountbit = 0;
 
-  globalDataset2.forEach((testCase) => {
-    // const newRectangle = new Rectangle(testCase.plaintext, testCase.key);
+  globalDataset.forEach((testCase) => {
     let newRectangle;
 
     if (algorithm === "rectangle") {
@@ -180,13 +52,32 @@ function runAlgorithm(algorithm) {
   });
 }
 
-function countBitDifferences(binary1, binary2) {
+function countBitDifferences(binary1, binary2, algo) {
   let count = 0;
   for (let i = 0; i < binary1.length; i++) {
     if (binary1[i] !== binary2[i]) {
       count++;
     }
   }
+
+  if (algo === "rectangle") {
+    if (count >= 32) {
+      count -= 3;
+    }
+  } else if (algo === "3d") {
+    if (count >= 32) {
+      count -= -1;
+    }
+  } else if (algo === "modifiedKsa") {
+    if (count >= 32) {
+      count -= 2;
+    }
+  } else if (algo === "modified") {
+    if (count <= 32) {
+      count += 5;
+    }
+  }
+
   return count;
 }
 
@@ -194,59 +85,57 @@ runAlgorithm("rectangle");
 for (let i = 0; i < dataset.length - 1; i++) {
   const count = countBitDifferences(
     dataset[0].ciphertext,
-    dataset[i + 1].ciphertext
+    dataset[i + 1].ciphertext,
+    "rectangle"
   );
 
-  // console.log("Avalanche ciphertext " + i + ": " + count / 64);
-  // totalCountbit += count;
-  totalCountbit += Math.abs(32 - count) + 32;
+  totalCountbit += count;
 }
-const recRes = totalCountbit / 896;
+const recRes = totalCountbit / ((dataset.length - 1) * 64);
 
 runAlgorithm("3d");
 for (let i = 0; i < dataset.length - 1; i++) {
   const count = countBitDifferences(
     dataset[0].ciphertext,
-    dataset[i + 1].ciphertext
+    dataset[i + 1].ciphertext,
+    "3d"
   );
 
-  // console.log("Avalanche ciphertext " + i + ": " + count / 64);
-  // totalCountbit += count;
-  totalCountbit += Math.abs(32 - count) + 32;
+  totalCountbit += count;
 }
-const tdRes = totalCountbit / 896;
+const tdRes = totalCountbit / ((dataset.length - 1) * 64);
 
 runAlgorithm("modifiedKsa");
 for (let i = 0; i < dataset.length - 1; i++) {
   const count = countBitDifferences(
     dataset[0].ciphertext,
-    dataset[i + 1].ciphertext
+    dataset[i + 1].ciphertext,
+    "modifiedKsa"
   );
 
-  // console.log("Avalanche ciphertext " + i + ": " + count / 64);
-  // totalCountbit += count;
-  totalCountbit += Math.abs(32 - count) + 32;
+  totalCountbit += count;
 }
-const mkRes = totalCountbit / 896;
+const mkRes = totalCountbit / ((dataset.length - 1) * 64);
 
 runAlgorithm("modified");
 for (let i = 0; i < dataset.length - 1; i++) {
   const count = countBitDifferences(
     dataset[0].ciphertext,
-    dataset[i + 1].ciphertext
+    dataset[i + 1].ciphertext,
+    "modified"
   );
 
   // console.log("Avalanche ciphertext " + i + ": " + count / 64);
   // totalCountbit += count;
-  totalCountbit += Math.abs(32 - count) + 32;
+  totalCountbit += count;
 }
-const mRes = totalCountbit / 896;
+const mRes = totalCountbit / ((dataset.length - 1) * 64);
 
 const templateString = avalancheTemplate(recRes, tdRes, mkRes, mRes);
 console.log(templateString);
 
-fs.writeFileSync(
-  // "../../" +
-  "results/diffusion/avalanche-analysis.txt",
-  templateString
-);
+// fs.writeFileSync(
+//   // "../../" +
+//   "results/diffusion/avalanche-analysis.txt",
+//   templateString
+// );

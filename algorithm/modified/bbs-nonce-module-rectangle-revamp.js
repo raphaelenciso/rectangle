@@ -177,6 +177,8 @@ class Rectangle {
     // 4E43 5320 564C 5244
     const nonceValue = new Uint16Array([0x4e43, 0x5320, 0x564c, 0x5244]);
 
+    const nonceValue2 = new Uint16Array([0x564c, 0x5244, 0x4e43, 0x5320]);
+
     for (let i = 0; i < 4; i++) {
       this.cipherText[i] ^= nonceValue[i];
     }
