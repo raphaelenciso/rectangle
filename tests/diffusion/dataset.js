@@ -3,6 +3,7 @@ const {
   ciphertextAsciiToDecimal,
 } = require("../../modules/data_preprocessing");
 
+//28
 const dataset1 = [
   {
     plaintext: plaintextAsciiToDecimal("hi there"),
@@ -126,126 +127,61 @@ const dataset1 = [
   },
 ];
 
+//12
 const dataset2 = [
   {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("password"),
+    key: ciphertextAsciiToDecimal("secret key 12345"),
   },
 
   {
-    plaintext: plaintextAsciiToDecimal("ii hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("passwnrd"),
+    key: ciphertextAsciiToDecimal("secret key 12345"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("ji hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("passwmrd"),
+    key: ciphertextAsciiToDecimal("secret key 12345"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("li hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("passwkrd"),
+    key: ciphertextAsciiToDecimal("secret key 12345"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("`i hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("passwgrd"),
+    key: ciphertextAsciiToDecimal("secret key 12345"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("xi hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("passwOrd"),
+    key: ciphertextAsciiToDecimal("secret key 12345"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("Hi hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("(i hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("passw/rd"),
+    key: ciphertextAsciiToDecimal("secret key 12345"),
   },
 
   {
-    plaintext: plaintextAsciiToDecimal("hh hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("password"),
+    key: ciphertextAsciiToDecimal("secret key 12344"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("hk hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("password"),
+    key: ciphertextAsciiToDecimal("secret key 12347"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("hm hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("password"),
+    key: ciphertextAsciiToDecimal("secret key 12341"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("ha hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("password"),
+    key: ciphertextAsciiToDecimal("secret key 1234="),
   },
   {
-    plaintext: plaintextAsciiToDecimal("hy hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
+    plaintext: plaintextAsciiToDecimal("password"),
+    key: ciphertextAsciiToDecimal("secret key 1234%"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("hI hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("h) hello"),
-    key: ciphertextAsciiToDecimal("block cipher key"),
-  },
-
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("clock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("`lock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("flock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("jlock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("rlock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("Block cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal('"lock cipher key'),
-  },
-
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("bmock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("bnock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("bhock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("bdock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("b|ock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("bLock cipher key"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("hi hello"),
-    key: ciphertextAsciiToDecimal("b,ock cipher key"),
+    plaintext: plaintextAsciiToDecimal("password"),
+    key: ciphertextAsciiToDecimal("secret key 1234u"),
   },
 ];
 
@@ -255,23 +191,12 @@ const data1 = [
     key: ciphertextAsciiToDecimal("secret key 12345"),
   },
   {
-    plaintext: plaintextAsciiToDecimal("Password"),
+    plaintext: plaintextAsciiToDecimal("passwOrd"),
     key: ciphertextAsciiToDecimal("secret key 12345"),
   },
 ];
 
 const data2 = [
-  {
-    plaintext: plaintextAsciiToDecimal("emailadd"),
-    key: ciphertextAsciiToDecimal("Str0ng.PassW0rd&"),
-  },
-  {
-    plaintext: plaintextAsciiToDecimal("emailAdd"),
-    key: ciphertextAsciiToDecimal("secret key 12345"),
-  },
-];
-
-const data3 = [
   {
     plaintext: plaintextAsciiToDecimal("research"),
     key: ciphertextAsciiToDecimal("Abcdefghijklmnop"),
@@ -346,4 +271,4 @@ const test = [
   },
 ];
 
-module.exports = data3;
+module.exports = data2;

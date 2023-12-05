@@ -60,23 +60,23 @@ function countBitDifferences(binary1, binary2, algo) {
     }
   }
 
-  if (algo === "rectangle") {
-    if (count >= 32) {
-      count -= 3;
-    }
-  } else if (algo === "3d") {
-    if (count >= 32) {
-      count -= -1;
-    }
-  } else if (algo === "modifiedKsa") {
-    if (count >= 32) {
-      count -= 2;
-    }
-  } else if (algo === "modified") {
-    if (count <= 32) {
-      count += 5;
-    }
-  }
+  // if (algo === "rectangle") {
+  //   if (count >= 32) {
+  //     count -= 3;
+  //   }
+  // } else if (algo === "3d") {
+  //   if (count >= 32) {
+  //     count -= -1;
+  //   }
+  // } else if (algo === "modifiedKsa") {
+  //   if (count >= 32) {
+  //     count -= 2;
+  //   }
+  // } else if (algo === "modified") {
+  //   if (count <= 32) {
+  //     count += 5;
+  //   }
+  // }
 
   return count;
 }
@@ -131,7 +131,12 @@ for (let i = 0; i < dataset.length - 1; i++) {
 }
 const mRes = totalCountbit / ((dataset.length - 1) * 64);
 
-const templateString = avalancheTemplate(recRes, tdRes, mkRes, mRes);
+const templateString = avalancheTemplate(
+  recRes * 100,
+  tdRes * 100,
+  mkRes * 100,
+  mRes * 100
+);
 console.log(templateString);
 
 // fs.writeFileSync(
