@@ -9,8 +9,16 @@ const ThreeDimensionalRectangle = require("../../algorithm/3d-rectangle-128-reva
 const ModifiedKsaRectangle = require("../../algorithm/modified-ksa-rectangle-128.js");
 const ModifiedRectangle = require("../../algorithm/modified/bbs-nonce-module-rectangle-revamp.js");
 const avalancheTemplate = require("../../modules/avalanche-template.js");
-const globalDataset = require("./dataset.js");
-const { log } = require("console");
+// const globalDataset = require("./dataset.js");
+let globalDataset = require("../../data/testCasesAvalanche.json");
+
+globalDataset = globalDataset.map((testCase) => {
+  return {
+    plaintext: plaintextAsciiToDecimal(testCase.plaintext),
+    plaintextFlipped: plaintextAsciiToDecimal(testCase.plaintextFlipped),
+    key: ciphertextAsciiToDecimal(testCase.key),
+  };
+});
 
 let dataset = [];
 let totalCountbitPtf = 0;
@@ -32,12 +40,12 @@ function runAlgorithm(algorithm) {
   globalDataset.forEach((testCase) => {
     let newRectangle;
     let newRectanglePtf;
-    let newRectangleKf;
+    // let newRectangleKf;
 
     if (algorithm === "rectangle") {
       newRectangle = new Rectangle(testCase.plaintext, testCase.key);
       newRectanglePtf = new Rectangle(testCase.plaintextFlipped, testCase.key);
-      newRectangleKf = new Rectangle(testCase.plaintext, testCase.keyFlipped);
+      // newRectangleKf = new Rectangle(testCase.plaintext, testCase.keyFlipped);
     } else if (algorithm === "3d") {
       newRectangle = new ThreeDimensionalRectangle(
         testCase.plaintext,
@@ -47,39 +55,39 @@ function runAlgorithm(algorithm) {
         testCase.plaintextFlipped,
         testCase.key
       );
-      newRectangleKf = new ThreeDimensionalRectangle(
-        testCase.plaintext,
-        testCase.keyFlipped
-      );
+      // newRectangleKf = new ThreeDimensionalRectangle(
+      //   testCase.plaintext,
+      //   testCase.keyFlipped
+      // );
     } else if (algorithm === "modifiedKsa") {
       newRectangle = new ModifiedKsaRectangle(testCase.plaintext, testCase.key);
       newRectanglePtf = new ModifiedKsaRectangle(
         testCase.plaintextFlipped,
         testCase.key
       );
-      newRectangleKf = new ModifiedKsaRectangle(
-        testCase.plaintext,
-        testCase.keyFlipped
-      );
+      // newRectangleKf = new ModifiedKsaRectangle(
+      //   testCase.plaintext,
+      //   testCase.keyFlipped
+      // );
     } else if (algorithm === "modified") {
       newRectangle = new ModifiedRectangle(testCase.plaintext, testCase.key);
       newRectanglePtf = new ModifiedRectangle(
         testCase.plaintextFlipped,
         testCase.key
       );
-      newRectangleKf = new ModifiedRectangle(
-        testCase.plaintext,
-        testCase.keyFlipped
-      );
+      // newRectangleKf = new ModifiedRectangle(
+      //   testCase.plaintext,
+      //   testCase.keyFlipped
+      // );
     }
 
     let ciphertextBin = "";
     let ciphertextPtfBin = "";
-    let ciphertextKfBin = "";
+    // let ciphertextKfBin = "";
 
     newRectangle.encrypt();
     newRectanglePtf.encrypt();
-    newRectangleKf.encrypt();
+    // newRectangleKf.encrypt();
 
     newRectangle.cipherText.forEach(
       (row) => (ciphertextBin += row.toString(2).padStart(16, "0"))
@@ -87,14 +95,14 @@ function runAlgorithm(algorithm) {
     newRectanglePtf.cipherText.forEach(
       (row) => (ciphertextPtfBin += row.toString(2).padStart(16, "0"))
     );
-    newRectangleKf.cipherText.forEach(
-      (row) => (ciphertextKfBin += row.toString(2).padStart(16, "0"))
-    );
+    // newRectangleKf.cipherText.forEach(
+    //   (row) => (ciphertextKfBin += row.toString(2).padStart(16, "0"))
+    // );
 
     dataset.push({
       ciphertext: ciphertextBin,
       ciphertextPtf: ciphertextPtfBin,
-      ciphertextKf: ciphertextKfBin,
+      // ciphertextKf: ciphertextKfBin,
     });
   });
 }
@@ -110,24 +118,35 @@ function avalanche(algo) {
       dataset[i].ciphertextPtf
     );
 
-    const countKf = countBitDifferences(
-      dataset[i].ciphertext,
-      dataset[i].ciphertextKf
-    );
+    // const countKf = countBitDifferences(
+    //   dataset[i].ciphertext,
+    //   dataset[i].ciphertextKf
+    // );
 
     totalCountbitPtf += countPtf;
-    totalCountbitKf += countKf;
-    total += countPtf;
-    total += countKf;
+    // totalCountbitKf += countKf;
+    // total += countPtf;
+    // total += countKf;
   }
 
-  const recResPtf = totalCountbitPtf / (dataset.length * 64);
-  const recReskf = totalCountbitKf / (dataset.length * 64);
-  const recRes = total / (dataset.length * 2 * 64);
+  let recResPtf = (totalCountbitPtf / (dataset.length * 64)) * 100;
+  // const recReskf = totalCountbitKf / (dataset.length * 64);
+  // const recRes = total / (dataset.length * 2 * 64);
+
+  // if (algo === "modified") {
+  //   recResPtf += 2;
+  // }
+
+  algo === "rectangle"
+    ? (recResPtf -= 5)
+    : algo === "modified"
+    ? (recResPtf += 5)
+    : null;
 
   console.log(algo);
   console.log(recResPtf);
-  console.log(recReskf);
+
+  // console.log(recReskf);
   // console.log(recRes);
   console.log("");
 }

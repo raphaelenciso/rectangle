@@ -207,6 +207,17 @@ const data2 = [
   },
 ];
 
+const data3 = [
+  {
+    plaintext: plaintextAsciiToDecimal("aaaaaaaa"),
+    key: ciphertextAsciiToDecimal("aaaaaaaaaaaaaaaa"),
+  },
+  {
+    plaintext: plaintextAsciiToDecimal("aaaaaaaa"),
+    key: ciphertextAsciiToDecimal("aaaaaaaaaaaaaaaa"),
+  },
+];
+
 const test = [
   {
     plaintext: plaintextAsciiToDecimal("emailadd"),
@@ -271,4 +282,4 @@ const test = [
   },
 ];
 
-module.exports = dataset1;
+module.exports = data3;
