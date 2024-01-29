@@ -9,7 +9,6 @@ const ThreeDimensionalRectangle = require("../../algorithm/3d-rectangle-128-reva
 const ModifiedKsaRectangle = require("../../algorithm/modified-ksa-rectangle-128.js");
 const ModifiedRectangle = require("../../algorithm/modified/bbs-nonce-module-rectangle-revamp.js");
 const avalancheTemplate = require("../../modules/avalanche-template.js");
-// const globalDataset = require("./dataset.js");
 let globalDataset = require("../../data/testCasesAvalanche.json");
 
 globalDataset = globalDataset.map((testCase) => {
